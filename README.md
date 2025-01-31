@@ -39,5 +39,6 @@ I’m also equipped with tools and skills to handle other aspects of development
 
 I’m always open to new opportunities, collaborations, or just a friendly chat about the latest in tech. You can reach me on Instagram:  
 [**Instagram**](https://www.instagram.com/ii_kero)
+
 Or via email:  
 [**callmekero69@gmail.com**](mailto:callmekero69@gmail.com)
