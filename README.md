@@ -2,7 +2,7 @@
 
 # 👋 Hi, I'm **Mina Saad**
 
-A **passionate frontend developer** from **Egypt** with a love for creating beautiful, intuitive, and user-friendly web experiences. I believe in the power of design and code to make the web a more interactive place.
+I'm a **frontend developer** from **Egypt**, deeply passionate about crafting visually appealing and highly functional web experiences. I believe that the perfect blend of design and development has the power to transform the web into an engaging, interactive space where users can feel connected and inspired. My goal is to build seamless, intuitive interfaces that not only look great but also offer an effortless experience for users.
 
 ---
 
