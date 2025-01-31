@@ -35,6 +35,15 @@ I’m also equipped with tools and skills to handle other aspects of development
 
 ---
 
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=CALLMEKERO&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dark&locale=en&hide_border=true&order=1" height="150" alt="stats graph"  />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=CALLMEKERO&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dark&hide_border=true&order=2" height="150" alt="languages graph"  />
+</div>
+
+###
+
+---
+
 ## 📫 Let's Connect!
 
 I’m always open to new opportunities, collaborations, or just a friendly chat about the latest in tech. 
