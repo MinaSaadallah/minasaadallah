@@ -46,9 +46,6 @@
 ## 📫 Get in Touch
 
 <p>
-  <a href="mailto:minasaad.dev@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-  </a>
   <a target="_blank" href="https://www.instagram.com/ii_kero">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
   </a>
