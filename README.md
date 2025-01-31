@@ -1,52 +1,41 @@
 # ![Banner](BANNER.png)
 
-# 👋 Hi, I'm MINA SAAD
+# 👋 Hi, I'm **Mina Saad**
 
-💻 A passionate frontend developer from Egypt.
+A **passionate frontend developer** from **Egypt** with a love for creating beautiful, intuitive, and user-friendly web experiences. I believe in the power of design and code to make the web a more interactive place.
 
 ---
 
 ## 🚀 Technologies & Tools
 
-### 🌐 Frontend
-<p align="left">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="React" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="Bootstrap" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS3" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="HTML5" width="42" height="42" />
-  <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" width="42" height="42" />
-</p>
+### **Frontend Development**  
+I specialize in building responsive and engaging websites using the latest frontend technologies:
+- **JavaScript** & **TypeScript**
+- **React** for dynamic UI
+- **HTML5**, **CSS3** for the structure and styling
+- **Bootstrap** & **Tailwind CSS** to streamline design with modern frameworks
 
-### 🛠 Backend & Databases
-<p align="left">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flask/flask-original-wordmark.svg" alt="Flask" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" width="42" height="42" />
-</p>
+### **Backend Development & Databases**  
+When it comes to the backend, I’m proficient in handling server-side logic and database management:
+- **Node.js** & **Python** for powerful backend solutions
+- **Flask** for lightweight Python web applications
+- **MySQL** for reliable and scalable database management
 
-### 🎨 Design & Tools
-<p align="left">
-  <img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="Illustrator" width="42" height="42" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" alt="Photoshop" width="42" height="42" />
-  <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma" width="42" height="42" />
-</p>
+### **Design & Creative Tools**  
+Design is where the magic begins. I use industry-leading design tools to create stunning visuals and seamless user interfaces:
+- **Adobe Illustrator** for vector-based graphics
+- **Photoshop** for editing and image manipulation
+- **Figma** for collaborative UI/UX design
 
-### 🔧 Other Tools
-<p align="left">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux" width="42" height="42" />
-  <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" width="42" height="42" />
-  <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="Arduino" width="42" height="42" />
-</p>
+### **Other Skills & Tools**  
+I’m also equipped with tools and skills to handle other aspects of development and project management:
+- **Linux** for a reliable development environment
+- **Git** for version control and collaborative development
+- **Arduino** for creative hardware projects
 
 ---
 
-## 📫 Get in Touch
+## 📫 Let's Connect!
 
-<p>
-  <a target="_blank" href="https://www.instagram.com/ii_kero">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" />
-  </a>
-</p>
+I’m always open to new opportunities, collaborations, or just a friendly chat about the latest in tech. You can reach me on Instagram:  
+[**Instagram**](https://www.instagram.com/ii_kero)
