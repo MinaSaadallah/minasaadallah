@@ -1,30 +1,38 @@
 # ![Banner](BANNER.png)
 
-# Hi, I'm Mina
+# Hey, I'm Minita
 
-I make websites.  
-Sometimes they even work.
-
----
-
-```javascript
-const developer = {
-  code: "constantly",
-  debug: "relentlessly",
-  deploy: "hopefully",
-  coffee: "excessively",
-};
-```
+I build things on the web and automate the boring stuff.  
+Mostly they work. Sometimes they don't. That's coding for you.
 
 ---
 
-## What I do
-
-- Write code
-- Break code
-- Try to fix it
+I'm all about making life easier with automation and scripts.  
+If there's a repetitive task, I'll probably write a script for it.  
+It's not magic, just a lot of trial and error.
 
 ---
 
-Fueled by coffee and vibes.  
-Thanks for stopping by.
+## What I'm into
+
+- Building websites and web apps
+- Writing automation scripts (because who has time for repetitive tasks?)
+- Breaking things and figuring out how to fix them
+- Learning new tools and technologies
+
+---
+
+## The cycle
+
+1. Write code
+2. Break code
+3. Fix code (or at least try)
+4. Automate it
+5. Repeat
+
+---
+
+Currently vibing with automation tools and whatever else catches my eye.
+
+Fueled by good music and the satisfaction of watching scripts do their thing.  
+Thanks for stopping by ✨
