@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mina Saadallah - Developer & Designer Portfolio">
-    <title>Mina Saadallah | Portfolio</title>
+    <meta name="description" content="Mina Saadallah - Developer & Designer">
+    <title>Mina Saadallah | Developer & Designer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -25,20 +25,10 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html,
         body {
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #F48A94 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            height: 100%;
+            overflow: hidden;
         }
 
         /* Animations */
@@ -62,12 +52,68 @@
             }
         }
 
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
         }
 
         .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse {
+            animation: pulse 4s ease-in-out infinite;
         }
 
         .delay-1 {
@@ -90,29 +136,54 @@
             opacity: 0;
         }
 
-        /* Mobile menu */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
+        .delay-5 {
+            animation-delay: 1s;
+            opacity: 0;
         }
 
-        .mobile-menu.open {
-            transform: translateX(0);
+        /* Gradient text */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #F48A94 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Skill bars animation */
-        .skill-bar {
+        /* Social link hover effect */
+        .social-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
             width: 0;
-            transition: width 1.5s ease-out;
+            height: 2px;
+            background: #F48A94;
+            transition: width 0.3s ease;
         }
 
-        .skill-bar.animate {
-            width: var(--skill-width);
+        .social-link:hover::before {
+            width: 100%;
         }
 
-        /* Touch targets */
+        .social-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Decorative circles */
+        .decorative-circle {
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+
+        /* Touch targets for mobile */
         @media (max-width: 768px) {
-            a, button {
+            a {
                 min-height: 44px;
                 min-width: 44px;
                 display: inline-flex;
@@ -123,51 +194,9 @@
     </style>
 </head>
 
-<body class="bg-black text-white">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800" role="navigation" aria-label="Main navigation">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 sm:h-20">
-                <a href="#home" class="text-xl sm:text-2xl font-bold text-dark-pink" aria-label="Home">MS</a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-400 hover:text-dark-pink transition-colors">Home</a>
-                    <a href="#about" class="text-gray-400 hover:text-dark-pink transition-colors">About</a>
-                    <a href="#skills" class="text-gray-400 hover:text-dark-pink transition-colors">Skills</a>
-                    <a href="#projects" class="text-gray-400 hover:text-dark-pink transition-colors">Projects</a>
-                    <a href="#contact" class="text-gray-400 hover:text-dark-pink transition-colors">Contact</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-dark-pink transition-colors p-2" aria-label="Toggle menu" aria-expanded="false">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 bottom-0 w-64 bg-black border-l border-gray-800 md:hidden" role="menu">
-            <div class="flex flex-col h-full">
-                <div class="flex justify-end p-4">
-                    <button id="mobile-menu-close" class="text-gray-400 hover:text-dark-pink transition-colors p-2" aria-label="Close menu">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex flex-col space-y-6 px-8 py-4">
-                    <a href="#home" class="text-gray-400 hover:text-dark-pink transition-colors text-lg mobile-menu-link">Home</a>
-                    <a href="#about" class="text-gray-400 hover:text-dark-pink transition-colors text-lg mobile-menu-link">About</a>
-                    <a href="#skills" class="text-gray-400 hover:text-dark-pink transition-colors text-lg mobile-menu-link">Skills</a>
-                    <a href="#projects" class="text-gray-400 hover:text-dark-pink transition-colors text-lg mobile-menu-link">Projects</a>
-                    <a href="#contact" class="text-gray-400 hover:text-dark-pink transition-colors text-lg mobile-menu-link">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body class="bg-black text-white h-screen">
+    <!-- Main Hero Container -->
+    <main class="relative h-screen w-full flex items-center justify-center overflow-hidden" role="main">
 
     <!-- Subtle background pattern -->
     <div class="fixed inset-0 opacity-5 pointer-events-none" aria-hidden="true">
@@ -176,580 +205,95 @@
         </div>
     </div>
 
-    <!-- Home Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative pt-16 sm:pt-20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-0">
-            <div class="space-y-8 sm:space-y-12 lg:space-y-16">
-                <!-- Name Section -->
-                <div class="text-center space-y-4 sm:space-y-6 fade-in-up">
-                    <div class="inline-block mb-2">
-                        <span class="text-xs sm:text-sm text-gray-500 tracking-widest uppercase">Portfolio</span>
-                    </div>
-                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none tracking-tight">
+        <!-- Decorative gradient blurs -->
+        <div class="fixed top-0 right-0 w-96 h-96 bg-dark-pink decorative-circle float" aria-hidden="true"></div>
+        <div class="fixed bottom-0 left-0 w-96 h-96 bg-dark-pink decorative-circle float pulse" style="animation-delay: 1s;" aria-hidden="true"></div>
+        <div class="fixed top-1/2 left-1/2 w-64 h-64 bg-dark-pink decorative-circle pulse" style="animation-delay: 2s;" aria-hidden="true"></div>
+
+        <!-- Content Container -->
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex flex-col items-center justify-center space-y-6 sm:space-y-8 md:space-y-10">
+                
+                <!-- Name and Title -->
+                <div class="text-center space-y-4 sm:space-y-6">
+                    <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight fade-in-up">
                         <span class="block text-white">Mina</span>
                         <span class="block text-dark-pink mt-2">Saadallah</span>
                     </h1>
-                    <div class="pt-2 sm:pt-4">
-                        <p class="text-lg sm:text-xl md:text-2xl text-gray-400 font-light">Developer & Designer</p>
-                    </div>
+                    <p class="text-xl sm:text-2xl md:text-3xl text-gray-400 font-light fade-in-up delay-1">
+                        Developer & Designer
+                    </p>
+                </div>
+
+                <!-- Tagline -->
+                <div class="text-center max-w-2xl fade-in-up delay-2">
+                    <p class="text-base sm:text-lg md:text-xl text-gray-500 leading-relaxed">
+                        Crafting elegant solutions that blend creativity with code
+                    </p>
                 </div>
 
                 <!-- Divider -->
-                <div class="flex items-center justify-center gap-4 fade-in-up delay-1">
-                    <div class="h-px w-16 sm:w-24 bg-gray-800"></div>
-                    <div class="w-1 h-1 bg-dark-pink rounded-full"></div>
-                    <div class="h-px w-16 sm:w-24 bg-gray-800"></div>
+                <div class="flex items-center justify-center gap-4 fade-in-up delay-3">
+                    <div class="h-px w-12 sm:w-16 bg-gray-800"></div>
+                    <div class="w-2 h-2 bg-dark-pink rounded-full"></div>
+                    <div class="h-px w-12 sm:w-16 bg-gray-800"></div>
                 </div>
 
-                <!-- Contact Links -->
-                <div class="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 fade-in-up delay-2">
+                <!-- Social Links -->
+                <nav class="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 fade-in-up delay-4" role="navigation" aria-label="Social links">
                     <a href="mailto:me@minasaadallah.com"
-                        class="group text-base sm:text-lg text-gray-400 hover:text-dark-pink transition-colors relative px-2 py-1">
-                        <span class="relative z-10">Email</span>
-                        <span
-                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-dark-pink group-hover:w-full transition-all duration-300"></span>
+                        class="social-link text-base sm:text-lg md:text-xl text-gray-400 hover:text-dark-pink transition-all px-2 py-1"
+                        aria-label="Send email">
+                        <span>Email</span>
                     </a>
-                    <a href="https://github.com/MinaSaadallah" target="_blank" rel="noopener noreferrer"
-                        class="group text-base sm:text-lg text-gray-400 hover:text-dark-pink transition-colors relative px-2 py-1">
-                        <span class="relative z-10">GitHub</span>
-                        <span
-                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-dark-pink group-hover:w-full transition-all duration-300"></span>
+                    <a href="https://github.com/MinaSaadallah" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="social-link text-base sm:text-lg md:text-xl text-gray-400 hover:text-dark-pink transition-all px-2 py-1"
+                        aria-label="Visit GitHub profile">
+                        <span>GitHub</span>
                     </a>
-                    <a href="https://linkedin.com/in/minasaadallah" target="_blank" rel="noopener noreferrer"
-                        class="group text-base sm:text-lg text-gray-400 hover:text-dark-pink transition-colors relative px-2 py-1">
-                        <span class="relative z-10">LinkedIn</span>
-                        <span
-                            class="absolute -bottom-1 left-0 w-0 h-0.5 bg-dark-pink group-hover:w-full transition-all duration-300"></span>
+                    <a href="https://linkedin.com/in/minasaadallah" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="social-link text-base sm:text-lg md:text-xl text-gray-400 hover:text-dark-pink transition-all px-2 py-1"
+                        aria-label="Visit LinkedIn profile">
+                        <span>LinkedIn</span>
                     </a>
-                </div>
+                </nav>
 
-                <!-- Scroll Indicator -->
-                <div class="text-center pt-8 sm:pt-12 fade-in-up delay-3">
-                    <a href="#about" class="inline-block text-gray-500 hover:text-dark-pink transition-colors" aria-label="Scroll to about section">
-                        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                <!-- Optional: Social Icons -->
+                <div class="flex justify-center gap-6 sm:gap-8 fade-in-up delay-5">
+                    <a href="https://github.com/MinaSaadallah" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="GitHub"
+                        class="text-gray-400 hover:text-dark-pink transition-all hover:scale-110 p-2">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/minasaadallah" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="LinkedIn"
+                        class="text-gray-400 hover:text-dark-pink transition-all hover:scale-110 p-2">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                        </svg>
+                    </a>
+                    <a href="mailto:me@minasaadallah.com" 
+                        aria-label="Email"
+                        class="text-gray-400 hover:text-dark-pink transition-all hover:scale-110 p-2">
+                        <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </a>
                 </div>
+
             </div>
         </div>
-
-        <!-- Corner accent -->
-        <div class="fixed top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-dark-pink/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
-        <div class="fixed bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-dark-pink/3 blur-3xl pointer-events-none" aria-hidden="true"></div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="min-h-screen flex items-center justify-center py-16 sm:py-20 lg:py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="space-y-8 sm:space-y-12">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center">
-                    <span class="text-dark-pink">About</span> <span class="text-white">Me</span>
-                </h2>
-                
-                <div class="space-y-6 text-gray-400 text-base sm:text-lg leading-relaxed">
-                    <p class="fade-in-up">
-                        Hey there! I'm Mina, a passionate developer and designer who loves building things on the web and automating the boring stuff.
-                    </p>
-                    <p class="fade-in-up delay-1">
-                        I specialize in creating elegant, user-friendly solutions that make a real impact. Whether it's crafting beautiful websites, developing robust web applications, or writing automation scripts, I bring creativity and technical expertise to every project.
-                    </p>
-                    <p class="fade-in-up delay-2">
-                        My approach is simple: write code, break things, fix them, automate it, and repeat. This cycle keeps me learning and improving every day.
-                    </p>
-                    <p class="fade-in-up delay-3">
-                        When I'm not coding, you'll find me exploring new technologies, contributing to open source, or fueled by good music while working on my next project.
-                    </p>
-                </div>
-
-                <div class="flex items-center justify-center gap-4 pt-4 fade-in-up delay-4">
-                    <div class="h-px w-16 sm:w-24 bg-gray-800"></div>
-                    <div class="w-1 h-1 bg-dark-pink rounded-full"></div>
-                    <div class="h-px w-16 sm:w-24 bg-gray-800"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="min-h-screen flex items-center justify-center py-16 sm:py-20 lg:py-24">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="space-y-8 sm:space-y-12">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center">
-                    <span class="text-white">My</span> <span class="text-dark-pink">Skills</span>
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                    <!-- Frontend -->
-                    <div class="space-y-4 sm:space-y-6 p-6 sm:p-8 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-colors">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-pink">Frontend Development</h3>
-                        <div class="space-y-4">
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">HTML/CSS</span>
-                                    <span class="text-sm sm:text-base text-gray-400">95%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">JavaScript</span>
-                                    <span class="text-sm sm:text-base text-gray-400">90%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">React</span>
-                                    <span class="text-sm sm:text-base text-gray-400">85%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Tailwind CSS</span>
-                                    <span class="text-sm sm:text-base text-gray-400">90%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Backend -->
-                    <div class="space-y-4 sm:space-y-6 p-6 sm:p-8 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-colors">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-pink">Backend Development</h3>
-                        <div class="space-y-4">
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Node.js</span>
-                                    <span class="text-sm sm:text-base text-gray-400">85%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Python</span>
-                                    <span class="text-sm sm:text-base text-gray-400">88%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 88%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Databases</span>
-                                    <span class="text-sm sm:text-base text-gray-400">82%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 82%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">APIs</span>
-                                    <span class="text-sm sm:text-base text-gray-400">87%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 87%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Design -->
-                    <div class="space-y-4 sm:space-y-6 p-6 sm:p-8 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-colors">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-pink">Design & UI/UX</h3>
-                        <div class="space-y-4">
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">UI Design</span>
-                                    <span class="text-sm sm:text-base text-gray-400">88%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 88%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">UX Research</span>
-                                    <span class="text-sm sm:text-base text-gray-400">80%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Responsive Design</span>
-                                    <span class="text-sm sm:text-base text-gray-400">95%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Prototyping</span>
-                                    <span class="text-sm sm:text-base text-gray-400">83%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 83%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tools -->
-                    <div class="space-y-4 sm:space-y-6 p-6 sm:p-8 bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-colors">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-dark-pink">Tools & Technologies</h3>
-                        <div class="space-y-4">
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Git/GitHub</span>
-                                    <span class="text-sm sm:text-base text-gray-400">92%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 92%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Docker</span>
-                                    <span class="text-sm sm:text-base text-gray-400">78%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 78%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">CI/CD</span>
-                                    <span class="text-sm sm:text-base text-gray-400">85%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm sm:text-base text-gray-300">Automation</span>
-                                    <span class="text-sm sm:text-base text-gray-400">90%</span>
-                                </div>
-                                <div class="w-full bg-gray-800 rounded-full h-2">
-                                    <div class="skill-bar bg-dark-pink h-2 rounded-full" style="--skill-width: 90%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="min-h-screen flex items-center justify-center py-16 sm:py-20 lg:py-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="space-y-8 sm:space-y-12">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center">
-                    <span class="text-white">Featured</span> <span class="text-dark-pink">Projects</span>
-                </h2>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    <!-- Project 1 -->
-                    <article class="group bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-all duration-300 overflow-hidden">
-                        <div class="p-6 sm:p-8 space-y-4">
-                            <div class="w-12 h-12 bg-dark-pink/10 rounded-lg flex items-center justify-center group-hover:bg-dark-pink/20 transition-colors">
-                                <svg class="w-6 h-6 text-dark-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl sm:text-2xl font-semibold text-white group-hover:text-dark-pink transition-colors">Web Application</h3>
-                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">A full-stack web application built with modern technologies, featuring real-time updates and responsive design.</p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">React</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Node.js</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">MongoDB</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 2 -->
-                    <article class="group bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-all duration-300 overflow-hidden">
-                        <div class="p-6 sm:p-8 space-y-4">
-                            <div class="w-12 h-12 bg-dark-pink/10 rounded-lg flex items-center justify-center group-hover:bg-dark-pink/20 transition-colors">
-                                <svg class="w-6 h-6 text-dark-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl sm:text-2xl font-semibold text-white group-hover:text-dark-pink transition-colors">Design System</h3>
-                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">A comprehensive design system with reusable components, ensuring consistency across multiple projects.</p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Figma</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Tailwind</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Storybook</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 3 -->
-                    <article class="group bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-all duration-300 overflow-hidden">
-                        <div class="p-6 sm:p-8 space-y-4">
-                            <div class="w-12 h-12 bg-dark-pink/10 rounded-lg flex items-center justify-center group-hover:bg-dark-pink/20 transition-colors">
-                                <svg class="w-6 h-6 text-dark-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl sm:text-2xl font-semibold text-white group-hover:text-dark-pink transition-colors">Automation Tool</h3>
-                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">An automation tool that streamlines repetitive tasks and improves workflow efficiency for development teams.</p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Python</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Bash</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Docker</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 4 -->
-                    <article class="group bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-all duration-300 overflow-hidden">
-                        <div class="p-6 sm:p-8 space-y-4">
-                            <div class="w-12 h-12 bg-dark-pink/10 rounded-lg flex items-center justify-center group-hover:bg-dark-pink/20 transition-colors">
-                                <svg class="w-6 h-6 text-dark-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl sm:text-2xl font-semibold text-white group-hover:text-dark-pink transition-colors">API Integration</h3>
-                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">A robust API integration platform that connects multiple services and provides seamless data synchronization.</p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">REST API</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">GraphQL</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">WebSocket</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 5 -->
-                    <article class="group bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-all duration-300 overflow-hidden">
-                        <div class="p-6 sm:p-8 space-y-4">
-                            <div class="w-12 h-12 bg-dark-pink/10 rounded-lg flex items-center justify-center group-hover:bg-dark-pink/20 transition-colors">
-                                <svg class="w-6 h-6 text-dark-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl sm:text-2xl font-semibold text-white group-hover:text-dark-pink transition-colors">Innovation Lab</h3>
-                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">Experimental projects exploring emerging technologies and innovative solutions to modern challenges.</p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">AI/ML</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">WebGL</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">PWA</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 6 -->
-                    <article class="group bg-gray-900/30 rounded-lg border border-gray-800 hover:border-dark-pink/50 transition-all duration-300 overflow-hidden">
-                        <div class="p-6 sm:p-8 space-y-4">
-                            <div class="w-12 h-12 bg-dark-pink/10 rounded-lg flex items-center justify-center group-hover:bg-dark-pink/20 transition-colors">
-                                <svg class="w-6 h-6 text-dark-pink" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl sm:text-2xl font-semibold text-white group-hover:text-dark-pink transition-colors">Cloud Solutions</h3>
-                            <p class="text-sm sm:text-base text-gray-400 leading-relaxed">Scalable cloud-based applications with automated deployment and infrastructure management.</p>
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">AWS</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">Terraform</span>
-                                <span class="px-3 py-1 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-full">K8s</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="text-center pt-4 sm:pt-8">
-                    <a href="https://github.com/MinaSaadallah" target="_blank" rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-dark-pink/10 text-dark-pink border border-dark-pink rounded-lg hover:bg-dark-pink hover:text-white transition-all duration-300 text-sm sm:text-base font-medium">
-                        <span>View More on GitHub</span>
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="min-h-screen flex items-center justify-center py-16 sm:py-20 lg:py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="space-y-8 sm:space-y-12">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center">
-                    <span class="text-white">Get In</span> <span class="text-dark-pink">Touch</span>
-                </h2>
-
-                <div class="text-center space-y-6 sm:space-y-8">
-                    <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 pt-4">
-                        <a href="mailto:me@minasaadallah.com"
-                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-dark-pink text-white rounded-lg hover:bg-dark-pink/90 transition-all duration-300 text-sm sm:text-base font-medium">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                            <span>Send Email</span>
-                        </a>
-
-                        <a href="https://linkedin.com/in/minasaadallah" target="_blank" rel="noopener noreferrer"
-                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gray-900/30 text-gray-300 border border-gray-800 rounded-lg hover:border-dark-pink hover:text-dark-pink transition-all duration-300 text-sm sm:text-base font-medium">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-                            </svg>
-                            <span>LinkedIn</span>
-                        </a>
-                    </div>
-
-                    <div class="flex items-center justify-center gap-4 pt-8">
-                        <div class="h-px w-16 sm:w-24 bg-gray-800"></div>
-                        <div class="w-1 h-1 bg-dark-pink rounded-full"></div>
-                        <div class="h-px w-16 sm:w-24 bg-gray-800"></div>
-                    </div>
-
-                    <div class="flex justify-center gap-6 sm:gap-8 pt-4">
-                        <a href="https://github.com/MinaSaadallah" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                            class="text-gray-400 hover:text-dark-pink transition-colors p-2">
-                            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com/in/minasaadallah" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                            class="text-gray-400 hover:text-dark-pink transition-colors p-2">
-                            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-                            </svg>
-                        </a>
-                        <a href="mailto:me@minasaadallah.com" aria-label="Email"
-                            class="text-gray-400 hover:text-dark-pink transition-colors p-2">
-                            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-gray-800 py-6 sm:py-8" role="contentinfo">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center text-sm sm:text-base text-gray-500">
-                <p>&copy; 2024 Mina Saadallah. All rights reserved.</p>
-                <p class="mt-2">Built with ❤️ and lots of coffee</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-
-        function openMobileMenu() {
-            mobileMenu.classList.add('open');
-            mobileMenuBtn.setAttribute('aria-expanded', 'true');
-        }
-
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('open');
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        }
-
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-
-        // Close menu when clicking on a link
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                closeMobileMenu();
-            }
-        });
-
-        // Animate skill bars on scroll
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px'
-        };
-
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillBars = entry.target.querySelectorAll('.skill-bar');
-                    skillBars.forEach(bar => {
-                        setTimeout(() => {
-                            bar.classList.add('animate');
-                        }, 100);
-                    });
-                    skillObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe skills section
-        const skillsSection = document.getElementById('skills');
-        if (skillsSection) {
-            skillObserver.observe(skillsSection);
-        }
-
-        // Animate sections on scroll
-        const fadeInObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const fadeElements = entry.target.querySelectorAll('.fade-in-up, .fade-in');
-                    fadeElements.forEach(el => {
-                        el.style.opacity = '1';
-                    });
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            fadeInObserver.observe(section);
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    </main>
 </body>
 
 </html>
