@@ -7,8 +7,8 @@ Optimized the portfolio website by replacing CDN-loaded Tailwind CSS with inline
 
 ### 1. Eliminated External CSS Dependency
 - **Before**: Loading entire Tailwind CSS framework from CDN (~3MB)
-- **After**: Inline CSS with only used utilities (~4KB)
-- **Impact**: 99.8% reduction in CSS payload size
+- **After**: Inline CSS with only used utilities (~2.1KB)
+- **Impact**: 99.9% reduction in CSS payload size
 
 ### 2. Removed Blocking External Request
 - **Before**: 1 blocking HTTP request to cdn.tailwindcss.com
