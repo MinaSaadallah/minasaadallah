@@ -1,28 +1,7 @@
-# ![Banner](BANNER.png)
+# hey, i'm minita
 
-# Hey, they call me Minita
+i write code. it breaks. i fix it. it breaks again.
 
-I build things on the web and automate the boring stuff.
+> fueled by good music and poor life choices.
 
----
-
-## What I do
-
-- Build websites and web apps
-- Write automation scripts
-- Break things and fix them
-
----
-
-## The cycle
-
-1. Write code
-2. Break code
-3. Fix code
-4. Automate it
-5. Repeat
-
----
-
-Fueled by good music.
-Thanks for stopping by :)
+thanks for stopping by :)
